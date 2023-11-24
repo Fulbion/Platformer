@@ -1,5 +1,7 @@
 # Platformer
 
+![image](https://github.com/Fulbion/Platformer/assets/85026326/e8f1e66a-27cf-4707-b8bf-a9efa32a4d75)
+
 This is a little platformer engine I made. Maybe someday this will be an actual game.
 
 # Installation
