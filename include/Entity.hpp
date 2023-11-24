@@ -13,7 +13,7 @@ public:
 
 	inline sf::Vector2f getPosition() const { return this->m_position; }
 	inline sf::Vector2f getSize() const { return this->m_hitbox.getSize(); }
-	inline sf::FloatRect getRect() const { return this->m_hitbox; }
+	inline sf::FloatRect getHitbox() const { return this->m_hitbox; }
 
 	inline void setPosition(float i_x, float i_y) { m_position.x = i_x; m_position.y = i_y; }
 	inline void setSize(float i_width, float i_height) { m_hitbox.width = i_width; m_hitbox.height = i_height; }

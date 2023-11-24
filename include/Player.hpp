@@ -13,7 +13,5 @@ public:
 
 private:
 	bool wasJumpKeyPressed = false;
-	bool wasOnGround = false;
-	bool isOnGround = false;
 	sf::Vector2f m_velocity;
 };

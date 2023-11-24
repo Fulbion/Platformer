@@ -16,7 +16,16 @@
 
 using json = nlohmann::json;
 
-typedef unsigned int uint;
+constexpr uint8_t CELL_SIZE = 16;
+constexpr float GRAVITY = 2.0f;
+constexpr float ACCELERATION = 1.0f;
+
+enum class CameraMovement
+{
+	Instant,
+	Follow,
+	Lerp
+};
 
 /// <summary>
 /// This function checks the sign of a number.
@@ -29,8 +38,6 @@ inline int8_t sign(T i_num)
 {
 	return (0 < i_num) - (0 > i_num);
 }
-
-inline const char* IMAGE_ROOT_DIR = "resources/images/";
 
 inline sf::Texture loadImage(const char* path)
 {
@@ -53,12 +60,9 @@ inline std::vector<sf::Texture> loadImages(const char* path)
 	return images;
 }
 
-constexpr uint8_t CELL_SIZE = 16;
-constexpr float GRAVITY = 2.0f;
-constexpr float ACCELERATION = 1.0f;
-
 inline std::unordered_map<std::string, std::vector<sf::Texture>> assets =
 {
 	{ "player", loadImages("entities/player") },
 	{ "grass", loadImages("tiles/grass") },
+	{ "stone", loadImages("tiles/stone") },
 };
