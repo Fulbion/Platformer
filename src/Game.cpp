@@ -39,7 +39,7 @@ Game::~Game()
 
 void Game::updateDeltaTime()
 {
-	m_deltaTime = m_clock.restart().asMilliseconds();
+	this->m_deltaTime = m_clock.restart().asSeconds();
 }
 
 void Game::handleEvents()

@@ -35,12 +35,19 @@ GameState::~GameState()
 void GameState::listenKeyboard(const float& i_deltaTime)
 {
 	this->checkForQuit();
-	this->m_player.update(i_deltaTime, m_map);
 }
 
 void GameState::update(const float& i_deltaTime)
 {
 	this->listenKeyboard(i_deltaTime);
+	this->m_player.update(i_deltaTime, m_map);
+	
+	this->m_viewTarget.x = this->m_player.getPosition().x + (this->m_player.getSize().x / 2);
+	this->m_viewTarget.y = this->m_player.getPosition().y + (this->m_player.getSize().y / 2);
+
+	this->updateView(CameraMovement::Lerp, i_deltaTime);
+
+	this->m_window->setView(m_view);
 }
 
 void GameState::render(sf::RenderTarget* i_target)

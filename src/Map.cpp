@@ -50,8 +50,22 @@ std::vector<sf::FloatRect> Map::physicsTilesAround(sf::Vector2i i_position)
 
 void Map::render(sf::RenderTarget* i_target)
 {
+	sf::FloatRect viewRect
+	(
+		i_target->getView().getCenter().x - (i_target->getView().getSize().x / 2),
+		i_target->getView().getCenter().y - (i_target->getView().getSize().y / 2),
+		i_target->getView().getSize().x,
+		i_target->getView().getSize().y
+	);
+
 	for (auto& tile : m_mapFile)
 	{
+		if (!(tile["position"][0] >= (viewRect.left - CELL_SIZE) / CELL_SIZE &&
+			tile["position"][0] < (viewRect.left + viewRect.width) / CELL_SIZE &&
+			tile["position"][1] >= (viewRect.top - CELL_SIZE) / CELL_SIZE &&
+			tile["position"][1] < (viewRect.top + viewRect.height) / CELL_SIZE))
+			continue;
+
 		sf::Sprite s;
 		s.setTexture(assets[tile["type"]][tile["variant"]]);
 		s.setPosition(tile["position"][0] * CELL_SIZE, tile["position"][1] * CELL_SIZE);
